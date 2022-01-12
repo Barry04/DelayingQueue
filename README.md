@@ -48,7 +48,7 @@ public class Msg {
 
 ```java
 public static void putMSG(Jedis jedis){
-		//将信息存入redis的消息zsorted队列  （分数自定义）
+		//将信息存入redis的消息zsorted队列  （分数自定义）分数 ==  （当前时间 + 多少秒 = 过期时间)
         Msg msg0 = new Msg(UUID.randomUUID().toString(),System.currentTimeMillis()+1006,"0");
         Msg msg1 = new Msg(UUID.randomUUID().toString(), System.currentTimeMillis() + 9000000,"1");
         Msg msg2 = new Msg(UUID.randomUUID().toString(), System.currentTimeMillis() + 5040000,"2");
@@ -108,5 +108,12 @@ public class PushMsg {
 
 ```
 
-<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
 
+## 运行前后的redis服务器的数据
+
+ ![alt png](image/2.png)
+## 控制台输出
+![alt png](image/3.png)
+## 总结
+应该一直运行的，然后效果会好些，然后消息过期时间设置合理一些。更加直观一些。
+<hr style=" border:solid; width:100px; height:1px;" color=#000000 size=1">
